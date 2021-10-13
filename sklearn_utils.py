@@ -9,7 +9,7 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 import pandas as pd
 
-def roc_auc_plot(*models, X_test = None, y_test = None, width = 14, height = 12, title='ROC Curve'):
+def roc_auc_plot(*models, X_test = None, y_test = None, width = 14, height = 12, legend_size = 14, title='ROC Curve'):
    
     """
     Function that accepts fitted model(s) and test data. It will then:
@@ -43,7 +43,7 @@ def roc_auc_plot(*models, X_test = None, y_test = None, width = 14, height = 12,
         fpr, tpr, _ = roc_curve(y_test, probs)
         plt.plot(fpr, tpr, marker='.', label= model_name + ' - AUC = %.4f' % (auc))
         
-    plt.legend(loc = 'lower right', prop={'size': 14})  
+    plt.legend(loc = 'lower right', prop={'size': legend_size})  
     plt.show()
 
 def classifier_train_report(*models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, title = 'Reports'):
