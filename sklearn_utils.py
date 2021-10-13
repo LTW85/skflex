@@ -8,7 +8,7 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 import pandas as pd
 
-def roc_auc_plot(*models, X_test=None, y_test=None, title='ROC Curve'):
+def roc_auc_plot(*models, X_test = None, y_test = None, title='ROC Curve'):
    
     """
     Function that accepts fitted model(s) and test data. It will then:
@@ -22,12 +22,13 @@ def roc_auc_plot(*models, X_test=None, y_test=None, title='ROC Curve'):
     rndm_auc = roc_auc_score(y_test, rndm_probs)
     rndm_fpr, rndm_tpr, _ = roc_curve(y_test, rndm_probs)
 
-    fig, ax = plt.subplots(figsize=(18, 14))
-    ax.plot(rndm_fpr, rndm_tpr, linestyle='--', label='Random Chance - AUC = %.1f' % (rndm_auc))
-    ax.set_xlabel('False Positive Rate')
-    ax.set_ylabel('True Positive Rate')
-    ax.set_title(title, fontsize=16, fontweight='bold')
-
+    plt.subplots(1, figsize=(14,12))
+    plt.plot(rndm_fpr, rndm_tpr, linestyle='--', label='Random Chance - AUC = %.1f' % (rndm_auc))
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title(title, fontsize=16, fontweight='bold')
+   
+    
     for i in models:
         model_name = type(i).__name__
         
@@ -39,12 +40,13 @@ def roc_auc_plot(*models, X_test=None, y_test=None, title='ROC Curve'):
             
         auc = roc_auc_score(y_test, probs)
         fpr, tpr, _ = roc_curve(y_test, probs)
-        ax.plot(fpr, tpr, marker='.', label= model_name + ' - AUC = %.4f' % (auc))
-
-    ax.legend(loc='lower right', prop={'size': 15})
+        plt.plot(fpr, tpr, marker='.', label= model_name + ' - AUC = %.4f' % (auc))
+        
+    plt.legend(loc = 'lower right', prop={'size': 14})  
 
 
 def classifier_train_report(*models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, title = 'Reports'):
+    
     """
     function that accepts classifier models, training data, and test data. It will then:
     - Fit the model(s) to training data
@@ -87,18 +89,18 @@ def validation_plot(model = None, param = None, param_grid = None, X_train = Non
     test_mean = np.mean(test_scores, axis=1)
     test_std = np.std(test_scores, axis=1)
     
-    plt.subplots(1, figsize=(7,7))
-    plt.plot(param_grid, train_mean, label="Training score", color="black")
-    plt.plot(param_grid, test_mean, label="Validation score", color="brown")
+    plt.subplots(1, figsize = (9,9))
+    plt.plot(param_grid, train_mean, label = 'Training score', color = 'black')
+    plt.plot(param_grid, test_mean, label = 'Validation score', color = 'brown')
 
-    plt.fill_between(param_grid, train_mean - train_std, train_mean + train_std, color="blue", alpha = 0.2)
-    plt.fill_between(param_grid, test_mean - test_std, test_mean + test_std, color="darkblue", alpha = 0.2)
+    plt.fill_between(param_grid, train_mean - train_std, train_mean + train_std, color = 'blue', alpha = 0.2)
+    plt.fill_between(param_grid, test_mean - test_std, test_mean + test_std, color = 'darkblue', alpha = 0.2)
  
     plt.title(title, fontsize=12, fontweight='bold')
-    plt.xlabel("Param Range")
-    plt.ylabel("Accuracy Score")
+    plt.xlabel('Param Range')
+    plt.ylabel('Accuracy Score')
     plt.tight_layout()
-    plt.legend(loc="best")
+    plt.legend(loc = 'best')
     plt.show()
 
 def train_val_test(data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True):
