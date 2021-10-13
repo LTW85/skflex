@@ -11,7 +11,7 @@ import pandas as pd
 def roc_auc_plot(*models, X_test=None, y_test=None, title='ROC Curve'):
    
     """
-    Function that accepts model(s) and test data. It will then:
+    Function that accepts fitted model(s) and test data. It will then:
     - Calculate ROC
     - Calculate AUC
     - Plot ROC curve with AUC provided in the legend
@@ -30,11 +30,16 @@ def roc_auc_plot(*models, X_test=None, y_test=None, title='ROC Curve'):
 
     for i in models:
         model_name = type(i).__name__
-        probs = i.predict_proba(X_test)
-        probs = probs[:, 1]
+        
+        if hasattr( i, 'predict_proba' ) and callable( i.predict_proba ):
+            probs = i.predict_proba(X_test)
+            probs = probs[: , 1]
+        else:
+            probs = i.decision_function(X_test)
+            
         auc = roc_auc_score(y_test, probs)
         fpr, tpr, _ = roc_curve(y_test, probs)
-        ax.plot(fpr, tpr, marker='.', label=model_name + ' - AUC = %.4f' % (auc))
+        ax.plot(fpr, tpr, marker='.', label= model_name + ' - AUC = %.4f' % (auc))
 
     ax.legend(loc='lower right', prop={'size': 15})
 
@@ -65,10 +70,16 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
         print('*'*100) 
         print()
 
-def validation_plot(model = None, param = None, param_grid = None, X_train = None, y_train = None, title = 'Validation Curve'):
+def validation_plot(model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', title = 'Validation Curve'):
+
+    """ 
+    Function that accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoreing methodology, as well as a plot title.
+    It will produce a plot of the validation curve for the training and test data using the mean scores and standard deviations obtained through the cross-validation process.  
+    
+    """
     train_scores, test_scores = validation_curve(
     model, X_train, y_train, param_name=param, param_range=param_grid,
-    scoring="accuracy", cv=5)
+    scoring=scoring, cv=cv)
     
     train_mean = np.mean(train_scores, axis=1)
     train_std = np.std(train_scores, axis=1)
@@ -83,9 +94,29 @@ def validation_plot(model = None, param = None, param_grid = None, X_train = Non
     plt.fill_between(param_grid, train_mean - train_std, train_mean + train_std, color="blue", alpha = 0.2)
     plt.fill_between(param_grid, test_mean - test_std, test_mean + test_std, color="darkblue", alpha = 0.2)
  
-    plt.title(title)
+    plt.title(title, fontsize=12, fontweight='bold')
     plt.xlabel("Param Range")
     plt.ylabel("Accuracy Score")
     plt.tight_layout()
     plt.legend(loc="best")
     plt.show()
+
+def train_val_test(data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True):
+    
+    """
+    Function that accepts a Pandas dataframe and will return a training, validation, and test set. 
+    """
+    
+    if shuffle:
+        data = data.sample(frac=1)
+    else:
+        pass
+    
+    X = data.drop(class_labels, axis = 1)
+    y = pd.DataFrame(data[class_labels])
+    
+    split = train + val
+    X_train, X_val, X_test = np.split(X, [int(train*len(X)), int(split*len(X))])
+    y_train, y_val, y_test = np.split(y, [int(train*len(y)), int(split*len(y))])
+    
+    return X_train, y_train, X_val, y_val, X_test, y_test
