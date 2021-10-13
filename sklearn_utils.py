@@ -1,14 +1,15 @@
 from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
+from sklearn.model_selection import validation_curve
+from sklearn.decomposition import PCA
 import matplotlib
 import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 import numpy as np
 import pandas as pd
 
-def roc_auc_plot(*models, X_test = None, y_test = None, title='ROC Curve'):
+def roc_auc_plot(*models, X_test = None, y_test = None, width = 14, height = 12, title='ROC Curve'):
    
     """
     Function that accepts fitted model(s) and test data. It will then:
@@ -22,7 +23,7 @@ def roc_auc_plot(*models, X_test = None, y_test = None, title='ROC Curve'):
     rndm_auc = roc_auc_score(y_test, rndm_probs)
     rndm_fpr, rndm_tpr, _ = roc_curve(y_test, rndm_probs)
 
-    plt.subplots(1, figsize=(14,12))
+    plt.subplots(1, figsize=(width, height))
     plt.plot(rndm_fpr, rndm_tpr, linestyle='--', label='Random Chance - AUC = %.1f' % (rndm_auc))
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
@@ -43,7 +44,7 @@ def roc_auc_plot(*models, X_test = None, y_test = None, title='ROC Curve'):
         plt.plot(fpr, tpr, marker='.', label= model_name + ' - AUC = %.4f' % (auc))
         
     plt.legend(loc = 'lower right', prop={'size': 14})  
-
+    plt.show()
 
 def classifier_train_report(*models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, title = 'Reports'):
     
@@ -72,7 +73,7 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
         print('*'*100) 
         print()
 
-def validation_plot(model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', title = 'Validation Curve'):
+def validation_plot(model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, title = 'Validation Curve'):
 
     """ 
     Function that accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoreing methodology, as well as a plot title.
@@ -89,14 +90,14 @@ def validation_plot(model = None, param = None, param_grid = None, X_train = Non
     test_mean = np.mean(test_scores, axis=1)
     test_std = np.std(test_scores, axis=1)
     
-    plt.subplots(1, figsize = (9,9))
+    plt.subplots(1, figsize = (width, height))
     plt.plot(param_grid, train_mean, label = 'Training score', color = 'black')
     plt.plot(param_grid, test_mean, label = 'Validation score', color = 'brown')
 
     plt.fill_between(param_grid, train_mean - train_std, train_mean + train_std, color = 'blue', alpha = 0.2)
     plt.fill_between(param_grid, test_mean - test_std, test_mean + test_std, color = 'darkblue', alpha = 0.2)
  
-    plt.title(title, fontsize=12, fontweight='bold')
+    plt.title(title, fontsize=14, fontweight='bold')
     plt.xlabel('Param Range')
     plt.ylabel('Accuracy Score')
     plt.tight_layout()
@@ -122,3 +123,24 @@ def train_val_test(data = None, class_labels = None, train = 0.6, val = 0.2, shu
     y_train, y_val, y_test = np.split(y, [int(train*len(y)), int(split*len(y))])
     
     return X_train, y_train, X_val, y_val, X_test, y_test
+
+def pca_scree_plot(data = None, n_components = None, width = 16, height = 10, legend_size = 12, title = 'PCA Scree Plot'):
+
+    """
+    Function that accepts data, and number of principal components to be analysed. It will produce a scree plot of the cumulative variance explained.  
+    """
+    
+    pca = PCA(n_components = n_components)
+    pca_model = pca.fit(data)
+    var_exp = pca_model.explained_variance_ratio_.cumsum().round(4)*100
+    
+    fig, ax = plt.subplots(figsize=(width, height))
+    ax.set_title(title, fontsize=14, fontweight='bold')
+    ax.set_xlabel('Principal Components', fontsize=12)
+    ax.set_ylabel('Variance Explained (%)', fontsize=12)
+    ax.axhspan(90, 100, alpha = 0.3, color = '#FF8C78', label = '90% - 95%')
+    ax.axhspan(95, 100, alpha = 0.5, color = '#FF8C78', label = '95% - 99%')
+    ax.axhspan(99, 100, alpha = 0.7, color = '#FF8C78', label = '99% - 100%')
+    ax.legend(loc = 4, prop={'size': legend_size})
+    ax.plot(var_exp, marker = '.', markersize = 10);
+    plt.show()    
