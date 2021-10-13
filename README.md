@@ -72,6 +72,8 @@ Accepts a Pandas dataframe and will return a training, validation, and test set.
 
 data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True
 
+Returns: X_train, y_train, X_val, y_val, X_test, y_test
+
 ## Dependencies
 - Sklearn
 - Matplotlib
