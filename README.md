@@ -18,6 +18,7 @@ Parameters:
 - title - title for ROC curve plot
 
 Default:
+
 models, X_test = None, y_test = None, title='ROC Curve'
 
 ### classifier_train_report
@@ -36,6 +37,7 @@ Parameters:
 - title - title for output report 
 
 Default:
+
 models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, title = 'Reports'
 
 ### validation_plot
@@ -53,6 +55,7 @@ Parameters:
 - title - title for validation plot
 
 Default:
+
 model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', title = 'Validation Curve'
 
 ### train_val_test
@@ -66,6 +69,7 @@ Parameters:
 - shuffle - if true, will shuffle the rows in the dataframe before splitting
 
 Default:
+
 data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True
 
 ## Dependencies
