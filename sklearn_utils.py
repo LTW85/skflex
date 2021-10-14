@@ -104,14 +104,14 @@ def validation_plot(model = None, param = None, param_grid = None, X_train = Non
     plt.legend(loc = 'best')
     plt.show()
 
-def train_val_test(data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True):
+def train_val_test(data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True, random_state = None):
     
     """
     Function that accepts a Pandas dataframe and will return a training, validation, and test set. 
     """
     
     if shuffle:
-        data = data.sample(frac=1)
+        data = data.sample(frac = 1, random_state = random_state)
     else:
         pass
     
