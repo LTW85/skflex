@@ -72,10 +72,11 @@ Accepts a Pandas dataframe and will return a training, validation, and test set.
 - train - percentage of data to be allocated to the training set
 - val - percentage of data to be allocated to the validation set
 - shuffle - if true, will shuffle the rows in the dataframe before splitting
+- random_state - if shuffle is ture, will set a random seed so that ordering produced by shuffle can be reproduced
 
 #### Default:
 
-data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True
+data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True, random_state = None
 
 Returns: X_train, y_train, X_val, y_val, X_test, y_test
 
