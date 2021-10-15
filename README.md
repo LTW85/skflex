@@ -1,5 +1,7 @@
 # sklearn_utils
 
+## *FLEXIBLE FUNCTIONS* ----- *FAST PROCESSING AND EVALUATION*
+
 Utility functions for use with the sklearn library. Primarily focuses on producing typical plots and metrics for evaluating machine learning models. Many of the functions accept multiple models to speed up workflows and enhance comparative evaluation.
 
 ## Functions 
