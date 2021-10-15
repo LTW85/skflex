@@ -1,4 +1,4 @@
-# sklearn_utils
+# skflex
 
 ## *FLEXIBLE FUNCTIONS* ----- *FAST PROCESSING AND EVALUATION*
 
