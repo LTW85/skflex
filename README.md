@@ -2,7 +2,7 @@
 
 ## *FLEXIBLE FUNCTIONS* ----- *FAST PROCESSING AND EVALUATION*
 
-Utility functions for use with the sklearn library. Primarily focuses on producing typical plots and metrics for evaluating machine learning models. Many of the functions accept multiple models to speed up workflows and enhance comparative evaluation.
+skflex provides a suite of functions for use with the sklearn library. The module primarily focuses on producing typical plots and metrics for evaluating machine learning models. It has been designed with flexability and customisation in mind to speed up workflows, and enhance comparative evaluation.
 
 ## Functions 
 Functions currently included along with descriptions and default parameter settings.
