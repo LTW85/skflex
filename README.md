@@ -32,7 +32,7 @@ Accepts classifier models, training data, and test data. It will then:
 - Make predictions using test data
 - Produce classification report for comparison
 - Produce confusion matrix for comparison
-- Provide summary using given evaluation metric
+- Provide an ordered summary (ranked best to worst score) using given evaluation metric
 
 #### Parameters:
 - models - model objects to be trained and evaluated
