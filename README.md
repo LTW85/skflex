@@ -36,16 +36,16 @@ Accepts classifier models, training data, and test data. It will then:
 
 #### Parameters:
 - models - model objects to be trained and evaluated
-- training_data_X - training feature set
-- training_data_y - training label set
-- test_data_X - test feature set
-- test_data_y - test label set
+- X_train - training feature set
+- y_train - training label set
+- X_test - test feature set
+- y_test - test label set
 - scoring - summary evaluation metric. Common classifier evaluation metrics can be used (accuracy, F1, recall, etc.). Refer to [sklean scoring documentation](https://scikit-learn.org/stable/modules/model_evaluation.html#accuracy-score) for more information. **Do not** pass scoring method as a string, for example, accuracy should be passed as accuracy_score - not 'accuracy_score'.
 - title - title for output report 
 
 #### Default:
 
-models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, scoring = accuracy_score, title = 'Reports'
+models, X_train = None, y_train = None, X_test = None, y_test = None, scoring = accuracy_score, title = 'Reports'
 
 ### validation_plot
 Accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoring methodology, as well as a plot title.
