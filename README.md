@@ -30,6 +30,7 @@ Accepts classifier models, training data, and test data. It will then:
 - Make predictions using test data
 - Produce classification report for comparison
 - Produce confusion matrix for comparison
+- Provide summary using given evaluation metric
 
 #### Parameters:
 - models - model objects to be trained and evaluated
@@ -37,6 +38,7 @@ Accepts classifier models, training data, and test data. It will then:
 - training_data_y - training label set
 - test_data_X - test feature set
 - test_data_y - test label set
+- scoring - summary evaluation metric. Common classifier evaluation metrics can be used (accuracy, F1, recall, etc.). Refer to  
 - title - title for output report 
 
 #### Default:
