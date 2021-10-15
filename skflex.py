@@ -84,7 +84,8 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
     for s in sorted_scores:
         print('model:' + ' ' + str(s['model']) + ' ' + '--- ' + 'score:' + ' ' + str(s['score'].round(3)))   
 
-def validation_plot(model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, title = 'Validation Curve'):
+def validation_plot(model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, 
+                    title = 'Validation Curve'):
 
     """ 
     Function that accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoreing methodology, as well as a plot title.
