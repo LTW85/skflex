@@ -44,7 +44,8 @@ def roc_auc_plot(*models, X_test = None, y_test = None, width = 14, height = 12,
         fpr, tpr, _ = roc_curve(y_test, probs)
         plt.plot(fpr, tpr, marker='.', label= model_name + ' - AUC = %.4f' % (auc))
         
-    plt.legend(loc = 'lower right', prop={'size': legend_size})  
+    plt.legend(loc = 'lower right', prop={'size': legend_size}) 
+    plt.tight_layout() 
     plt.show()
 
 def classifier_train_report(*models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, scoring = accuracy_score, title = 'Reports'):
