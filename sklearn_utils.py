@@ -6,6 +6,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
+import sklearn.metrics
 import numpy as np
 import pandas as pd
 
@@ -46,7 +47,7 @@ def roc_auc_plot(*models, X_test = None, y_test = None, width = 14, height = 12,
     plt.legend(loc = 'lower right', prop={'size': legend_size})  
     plt.show()
 
-def classifier_train_report(*models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, title = 'Reports'):
+def classifier_train_report(*models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, scoring = accuracy_score, title = 'Reports'):
     
     """
     function that accepts classifier models, training data, and test data. It will then:
@@ -59,6 +60,7 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
     
     print('~'*50 + title + '~'*50)
     
+    m_scores = []
     for i in models:
         model_name = type(i).__name__
         i.fit(training_data_X, training_data_y)
@@ -72,6 +74,12 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
         print()
         print('*'*100) 
         print()
+        score = scoring(test_data_y, y_pred)
+        m_scores.append({'model': model_name, 'score': score})
+        
+    print('Summary:') 
+    for s in m_scores:
+        print('model:' + ' ' + str(s['model']) + ' ' + '--- ' + 'score:' + ' ' + str(s['score'].round(3)))   
 
 def validation_plot(model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, title = 'Validation Curve'):
 
