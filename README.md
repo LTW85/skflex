@@ -43,7 +43,7 @@ Accepts classifier models, training data, and test data. It will then:
 
 #### Default:
 
-models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, scoring = accuracy_score title = 'Reports'
+models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, scoring = accuracy_score, title = 'Reports'
 
 ### validation_plot
 Accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoring methodology, as well as a plot title.
