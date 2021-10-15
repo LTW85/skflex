@@ -55,6 +55,7 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
     - Make predictions using test data
     - Produce classification report for comparison
     - Produce confusion matrix for comparison
+    - Provide ordered summary using given evaluation metric
     
     """
     
@@ -77,8 +78,10 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
         score = scoring(test_data_y, y_pred)
         m_scores.append({'model': model_name, 'score': score})
         
+    sorted_scores = sorted(m_scores, key=lambda s: s['score'], reverse = True)
+    
     print('Summary:') 
-    for s in m_scores:
+    for s in sorted_scores:
         print('model:' + ' ' + str(s['model']) + ' ' + '--- ' + 'score:' + ' ' + str(s['score'].round(3)))   
 
 def validation_plot(model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, title = 'Validation Curve'):
