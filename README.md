@@ -40,7 +40,7 @@ Accepts classifier models, training data, and test data. It will then:
 - y_train - training label set
 - X_test - test feature set
 - y_test - test label set
-- scoring - summary evaluation metric. Common classifier evaluation metrics can be used (accuracy, F1, recall, etc.). Refer to [sklean scoring documentation](https://scikit-learn.org/stable/modules/model_evaluation.html#accuracy-score) for more information. **Do not** pass scoring method as a string, for example, accuracy should be passed as accuracy_score - not 'accuracy_score'.
+- scoring - summary evaluation metric. Common classifier evaluation metrics including accuracy, f1, precision, and recall are supported. Refer to [sklean scoring documentation](https://scikit-learn.org/stable/modules/model_evaluation.html#accuracy-score) for more information. **Do not** pass scoring method as a string, for example, accuracy should be passed as accuracy_score - not 'accuracy_score'. All methods should be passed as method_score, for example recall_score.
 - title - title for output report 
 
 #### Default:
