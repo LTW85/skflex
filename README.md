@@ -8,7 +8,7 @@ skflex provides a suite of utility functions for use with the sklearn library. T
 
 `pip install skflex`
 
- `import skflex.sklex as skf`
+ `import skflex.skflex as skf`
 
 ## Functions 
 Functions currently included along with descriptions and default parameter settings.
