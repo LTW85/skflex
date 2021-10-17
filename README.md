@@ -33,7 +33,7 @@ Accepts fitted model(s) and test data. It will then:
 
 models, X_test = None, y_test = None, width = 14, height = 12, legend_size = 14, title='ROC Curve'
 
-#### Example
+#### Example:
 
 ```
 from sklearn.naive_bayes import GaussianNB
@@ -58,10 +58,10 @@ Accepts classifier models, training data, and test data. It will then:
 
 #### Parameters:
 - models - model objects to be trained and evaluated
-- training_data_X - training feature set
-- training_data_y - training label set
-- test_data_X - test feature set
-- test_data_y - test label set
+- X_train - training feature set
+- y_train - training label set
+- X_test - test feature set
+- y_test - test label set
 - scoring - summary evaluation metric. Common classifier evaluation metrics including accuracy, f1, precision, and recall are supported. Refer to [sklean scoring documentation](https://scikit-learn.org/stable/modules/model_evaluation.html#accuracy-score) for more information. Scoring methodologies should be passed as strings, for example, precision would be passed as `scoring = 'precision'` 
 - title - title for output report 
 
@@ -69,7 +69,7 @@ Accepts classifier models, training data, and test data. It will then:
 
 models, X_train = None, y_train = None, X_test = None, y_test = None, scoring = 'accuracy', title = 'Reports'
 
-#### Example
+#### Example:
 
 ```
 from sklearn.naive_bayes import GaussianNB
@@ -101,7 +101,7 @@ It will produce a plot of the validation curve for the training and test data us
 
 model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, title = 'Validation Curve'
 
-#### Example
+#### Example:
 
 ```
 from sklearn.naive_bayes import DecisionTreeClassifier
@@ -129,7 +129,7 @@ data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True, random
 
 Returns: X_train, y_train, X_val, y_val, X_test, y_test
 
-#### Example
+#### Example:
 
 ```
 X_train, y_train, X_val, y_val, X_test, y_test = train_val_test(data = my_data, class_labels = 'labels', train = 0.6, val = 0.2)
@@ -151,7 +151,7 @@ Accepts data (array/dataframe), and number of principal components to be analyse
 
 data = None, n_components = None, width = 16, height = 10, legend_size = 12, scale_data = False, title = 'PCA Scree Plot'
 
-### Example
+### Example:
 
 ```
 from sklearn.preprocessing import scale
