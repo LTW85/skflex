@@ -52,7 +52,7 @@ def roc_auc_plot(*models, X_test = None, y_test = None, width = 14, height = 12,
     plt.tight_layout() 
     plt.show()
 
-def classifier_train_report(*models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, scoring = 'accuracy', title = 'Reports'):
+def classifier_train_report(*models, X_train = None, y_train = None, X_test = None, y_test = None, scoring = 'accuracy', title = 'Reports'):
     
     """
     function that accepts classifier models, training data, and test data. It will then:
@@ -70,26 +70,26 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
 
     for i in models:
         model_name = type(i).__name__
-        i.fit(training_data_X, training_data_y)
-        y_pred = i.predict(test_data_X)
+        i.fit(X_train, y_train)
+        y_pred = i.predict(X_test)
         print()
         print('-'*20 + model_name + ' ' + 'Classification Report' + '-'*20)
-        print(classification_report(y_pred, test_data_y)) 
+        print(classification_report(y_pred, y_test)) 
         print()
         print('-'*20 + model_name + ' ' + 'Confusion Matrix' + '-'*20)
-        print(confusion_matrix(y_pred, test_data_y))
+        print(confusion_matrix(y_pred, y_test))
         print()
         print('*'*100) 
         print()
         
         if scoring == 'accuracy':
-            sum_score = accuracy_score(test_data_y, y_pred)
+            sum_score = accuracy_score(y_test, y_pred)
         elif scoring == 'f1':
-            sum_score = f1_score(test_data_y, y_pred)
+            sum_score = f1_score(y_test, y_pred)
         elif scoring == 'precision':
-            sum_score = precision_score(test_data_y, y_pred)
+            sum_score = precision_score(y_test, y_pred)
         elif scoring == 'recall':
-            sum_score = recall_score(test_data_y, y_pred)
+            sum_score = recall_score(y_test, y_pred)
 
         m_scores.append({'model': model_name, 'sum_score': sum_score})
         
