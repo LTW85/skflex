@@ -45,7 +45,7 @@ model_2 = LogisticRegression()
 model_1.fit(X_train, y_train)
 model_2.fit(X_train, y_train)
 
-roc_auc_plot(model_1, model_2, X_test = X_test, y_test = y_test, title = 'Example ROC plot')
+skf.roc_auc_plot(model_1, model_2, X_test = X_test, y_test = y_test, title = 'Example ROC plot')
 ```
 
 ### classifier_train_report
@@ -78,7 +78,7 @@ from sklearn.linear_model import LogisticRegression
 model_1 = GaussianNB()
 model_2 = LogisticRegression()
 
-classifier_train_report(model_1, model_2, X_train = X_train, y_train = y_train, X_test = X_test, y_test = y_test, scoring = 'accuracy', title = 'Example Report')
+skf.classifier_train_report(model_1, model_2, X_train = X_train, y_train = y_train, X_test = X_test, y_test = y_test, scoring = 'accuracy', title = 'Example Report')
 ```
 
 ### validation_plot
@@ -109,7 +109,7 @@ from sklearn.naive_bayes import DecisionTreeClassifier
 model_1 = DecisionTreeClassifier()
 params = [5, 10, 15, 20, 30, 40, 50]
 
-validation_plot(model = model_1, param = 'max_depth', param_grid = params, X_train = X_train, y_train = y_train, title = 'Example Validation Curve')
+skf.validation_plot(model = model_1, param = 'max_depth', param_grid = params, X_train = X_train, y_train = y_train, title = 'Example Validation Curve')
 ```
 
 ### train_val_test
@@ -132,7 +132,7 @@ Returns: X_train, y_train, X_val, y_val, X_test, y_test
 #### Example:
 
 ```
-X_train, y_train, X_val, y_val, X_test, y_test = train_val_test(data = my_data, class_labels = 'labels', train = 0.6, val = 0.2)
+X_train, y_train, X_val, y_val, X_test, y_test = skf.train_val_test(data = my_data, class_labels = 'labels', train = 0.6, val = 0.2)
 ```
 
 ### pca_scree_plot
@@ -158,7 +158,7 @@ from sklearn.preprocessing import scale
 
 n_data = scale(my_data)
 
-pca_scree_plot(data = n_data, n_components = 70, title = 'Example PCA Scree Plot')
+skf.pca_scree_plot(data = n_data, n_components = 70, title = 'Example PCA Scree Plot')
 ```
 
 ## Requirements
