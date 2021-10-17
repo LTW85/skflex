@@ -101,6 +101,17 @@ It will produce a plot of the validation curve for the training and test data us
 
 model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, title = 'Validation Curve'
 
+#### Example
+
+```
+from sklearn.naive_bayes import DecisionTreeClassifier
+
+model_1 = DecisionTreeClassifier()
+params = [5, 10, 15, 20, 30, 40, 50]
+
+validation_plot(model = model_1, param = 'max_depth', param_grid = params, X_train = X_train, y_train = y_train, title = 'Example Validation Curve')
+```
+
 ### train_val_test
 Accepts a Pandas dataframe and will return a training, validation, and test set. Operates in a similar fashion to the sklearn train_test_split function by defining a percentage split for the training and validation sets (example 0.6 = 60%). The remainder is allocated to the test set.
 
@@ -118,6 +129,12 @@ data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True, random
 
 Returns: X_train, y_train, X_val, y_val, X_test, y_test
 
+#### Example
+
+```
+X_train, y_train, X_val, y_val, X_test, y_test = train_val_test(data = my_data, class_labels = 'labels', train = 0.6, val = 0.2)
+```
+
 ### pca_scree_plot
 Accepts data (array/dataframe), and number of principal components to be analysed. It will produce a scree plot of the cumulative variance explained.
 
@@ -133,6 +150,16 @@ Accepts data (array/dataframe), and number of principal components to be analyse
 #### Default:
 
 data = None, n_components = None, width = 16, height = 10, legend_size = 12, scale_data = False, title = 'PCA Scree Plot'
+
+### Example
+
+```
+from sklearn.preprocessing import scale
+
+n_data = scale(my_data)
+
+pca_scree_plot(data = n_data, n_components = 70, title = 'Example PCA Scree Plot')
+```
 
 ## Requirements
 - Sklearn >= 0.24.1
