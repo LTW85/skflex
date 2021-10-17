@@ -108,7 +108,7 @@ Accepts data (array/dataframe), and number of principal components to be analyse
 data = None, n_components = None, width = 16, height = 10, legend_size = 12, scale_data = False, title = 'PCA Scree Plot'
 
 ## Requirements
-- Sklearn => 0.24.1
-- Matplotlib => 3.3.4
-- Pandas => 1.2.4
-- Numpy => 1.20.1
+- Sklearn >= 0.24.1
+- Matplotlib >= 3.3.4
+- Pandas >= 1.2.4
+- Numpy >= 1.20.1
