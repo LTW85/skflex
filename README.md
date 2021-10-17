@@ -123,6 +123,8 @@ skf.validation_plot(model = model_1, param = 'max_depth', param_grid = params,
                     title = 'Example Validation Curve')
 ```
 
+![validation plot](example_validation_curve.PNG)
+
 ### train_val_test
 Accepts a Pandas dataframe and will return a training, validation, and test set. Operates in a similar fashion to the sklearn train_test_split function by defining a percentage split for the training and validation sets (example 0.6 = 60%). The remainder is allocated to the test set.
 
@@ -174,6 +176,7 @@ n_data = scale(my_data)
 
 skf.pca_scree_plot(data = n_data, n_components = 70, title = 'Example PCA Scree Plot')
 ```
+![scree plot](example_scree_plot.PNG)
 
 ## Requirements
 - Sklearn >= 0.24.1
