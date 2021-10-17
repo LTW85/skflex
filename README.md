@@ -14,7 +14,6 @@ import skflex.skflex as skf
 ## Functions 
 Functions currently included along with descriptions and default parameter settings.
 
-refer to the [Github](https://github.com/LTW85/skflex/tree/main) repository for example images of plots.
 
 ### roc_auc_plot
 Accepts fitted model(s) and test data. It will then:
@@ -47,8 +46,11 @@ model_2 = LogisticRegression()
 model_1.fit(X_train, y_train)
 model_2.fit(X_train, y_train)
 
-skf.roc_auc_plot(model_1, model_2, X_test = X_test, y_test = y_test, title = 'Example ROC plot')
+skf.roc_auc_plot(model_1, model_2, X_test = X_test, y_test = y_test, 
+                title = 'Example ROC plot')
 ```
+
+![roc plot](example_roc_plot.PNG)
 
 ### classifier_train_report
 Accepts classifier models, training data, and test data. It will then:
@@ -80,7 +82,11 @@ from sklearn.linear_model import LogisticRegression
 model_1 = GaussianNB()
 model_2 = LogisticRegression()
 
-skf.classifier_train_report(model_1, model_2, X_train = X_train, y_train = y_train, X_test = X_test, y_test = y_test, scoring = 'accuracy', title = 'Example Report')
+skf.classifier_train_report(model_1, model_2, X_train = X_train, y_train = y_train, 
+                            X_test = X_test, 
+                            y_test = y_test, 
+                            scoring = 'accuracy', 
+                            title = 'Example Report')
 ```
 
 ### validation_plot
@@ -111,7 +117,10 @@ from sklearn.naive_bayes import DecisionTreeClassifier
 model_1 = DecisionTreeClassifier()
 params = [5, 10, 15, 20, 30, 40, 50]
 
-skf.validation_plot(model = model_1, param = 'max_depth', param_grid = params, X_train = X_train, y_train = y_train, title = 'Example Validation Curve')
+skf.validation_plot(model = model_1, param = 'max_depth', param_grid = params, 
+                    X_train = X_train, 
+                    y_train = y_train, 
+                    title = 'Example Validation Curve')
 ```
 
 ### train_val_test
@@ -134,7 +143,10 @@ Returns: X_train, y_train, X_val, y_val, X_test, y_test
 #### Example:
 
 ```
-X_train, y_train, X_val, y_val, X_test, y_test = skf.train_val_test(data = my_data, class_labels = 'labels', train = 0.6, val = 0.2)
+X_train, y_train, X_val, y_val, X_test, y_test = skf.train_val_test(data = my_data, 
+                                                                    class_labels = 'labels', 
+                                                                    train = 0.6, 
+                                                                    val = 0.2)
 ```
 
 ### pca_scree_plot
