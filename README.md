@@ -14,6 +14,8 @@ import skflex.skflex as skf
 ## Functions 
 Functions currently included along with descriptions and default parameter settings.
 
+refer to the [Github](https://github.com/LTW85/skflex/tree/main) repository for example images of plots.
+
 ### roc_auc_plot
 Accepts fitted model(s) and test data. It will then:
 - Calculate ROC
