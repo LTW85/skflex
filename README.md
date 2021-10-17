@@ -69,6 +69,18 @@ Accepts classifier models, training data, and test data. It will then:
 
 models, X_train = None, y_train = None, X_test = None, y_test = None, scoring = 'accuracy', title = 'Reports'
 
+#### Example
+
+```
+from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import LogisticRegression
+
+model_1 = GaussianNB()
+model_2 = LogisticRegression()
+
+classifier_train_report(model_1, model_2, X_train = X_train, y_train = y_train, X_test = X_test, y_test = y_test, scoring = 'accuracy', title = 'Example Report')
+```
+
 ### validation_plot
 Accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoring methodology, as well as a plot title.
 It will produce a plot of the validation curve for the training and test data using the mean scores and standard deviations obtained through the cross-validation process. 
