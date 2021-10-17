@@ -47,12 +47,12 @@ Accepts classifier models, training data, and test data. It will then:
 - training_data_y - training label set
 - test_data_X - test feature set
 - test_data_y - test label set
-- scoring - summary evaluation metric. Common classifier evaluation metrics including accuracy, f1, precision, and recall are supported. Refer to [sklean scoring documentation](https://scikit-learn.org/stable/modules/model_evaluation.html#accuracy-score) for more information. **Do not** pass scoring method as a string, for example, accuracy should be passed as accuracy_score - not 'accuracy_score'. All methods should be passed as method_score, for example recall_score.
+- scoring - summary evaluation metric. Common classifier evaluation metrics including accuracy, f1, precision, and recall are supported. Refer to [sklean scoring documentation](https://scikit-learn.org/stable/modules/model_evaluation.html#accuracy-score) for more information. Scoring methodologies should be passed as strings, for example, precision would be passed as `scoring = 'precision'` 
 - title - title for output report 
 
 #### Default:
 
-models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, scoring = accuracy_score, title = 'Reports'
+models, X_train = None, y_train = None, X_test = None, y_test = None, scoring = 'accuracy', title = 'Reports'
 
 ### validation_plot
 Accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoring methodology, as well as a plot title.
@@ -100,14 +100,15 @@ Accepts data (array/dataframe), and number of principal components to be analyse
 - width - width of plot
 - height - height of plot
 - legend_size - size of plot legend
+- scale_data - normalises data before analysis and plotting. If the data being passed has not yet been normalised, this parameter should be set as `scale_data = True`
 - title - plot title
 
 #### Default:
 
-data = None, n_components = None, width = 16, height = 10, legend_size = 12, title = 'PCA Scree Plot'
+data = None, n_components = None, width = 16, height = 10, legend_size = 12, scale_data = False, title = 'PCA Scree Plot'
 
-## Dependencies
-- Sklearn
-- Matplotlib
-- Pandas
-- Numpy
+## Requirements
+- Sklearn => 0.24.1
+- Matplotlib => 3.3.4
+- Pandas => 1.2.4
+- Numpy => 1.20.1
