@@ -33,6 +33,21 @@ Accepts fitted model(s) and test data. It will then:
 
 models, X_test = None, y_test = None, width = 14, height = 12, legend_size = 14, title='ROC Curve'
 
+#### Example
+
+```
+from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import LogisticRegression
+
+model_1 = GaussianNB()
+model_2 = LogisticRegression()
+
+model_1.fit(X_train, y_train)
+model_2.fit(X_train, y_train)
+
+roc_auc_plot(model_1, model_2, X_test = X_test, y_test = y_test, title = 'Example ROC plot')
+```
+
 ### classifier_train_report
 Accepts classifier models, training data, and test data. It will then:
 - Fit the model(s) to training data
