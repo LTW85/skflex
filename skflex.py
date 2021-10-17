@@ -2,6 +2,7 @@ from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import validation_curve
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import scale
 import matplotlib
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report
@@ -51,7 +52,7 @@ def roc_auc_plot(*models, X_test = None, y_test = None, width = 14, height = 12,
     plt.tight_layout() 
     plt.show()
 
-def classifier_train_report(*models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, scoring = accuracy_score, title = 'Reports'):
+def classifier_train_report(*models, training_data_X = None, training_data_y = None, test_data_X = None, test_data_y = None, scoring = 'accuracy', title = 'Reports'):
     
     """
     function that accepts classifier models, training data, and test data. It will then:
@@ -66,6 +67,7 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
     print('~'*50 + title + '~'*50)
     
     m_scores = []
+
     for i in models:
         model_name = type(i).__name__
         i.fit(training_data_X, training_data_y)
@@ -79,14 +81,23 @@ def classifier_train_report(*models, training_data_X = None, training_data_y = N
         print()
         print('*'*100) 
         print()
-        score = scoring(test_data_y, y_pred)
-        m_scores.append({'model': model_name, 'score': score})
         
-    sorted_scores = sorted(m_scores, key=lambda s: s['score'], reverse = True)
+        if scoring == 'accuracy':
+            sum_score = accuracy_score(test_data_y, y_pred)
+        elif scoring == 'f1':
+            sum_score = f1_score(test_data_y, y_pred)
+        elif scoring == 'precision':
+            sum_score = precision_score(test_data_y, y_pred)
+        elif scoring == 'recall':
+            sum_score = recall_score(test_data_y, y_pred)
+
+        m_scores.append({'model': model_name, 'sum_score': sum_score})
+        
+    sorted_scores = sorted(m_scores, key=lambda s: s['sum_score'], reverse = True)
     
     print('Summary:') 
     for s in sorted_scores:
-        print('model:' + ' ' + str(s['model']) + ' ' + '--- ' + 'score:' + ' ' + str(s['score'].round(3)))   
+        print('model:' + ' ' + str(s['model']) + ' ' + '--- ' + 'score:' + ' ' + str(s['sum_score'].round(3)))   
 
 def validation_plot(model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, 
                     title = 'Validation Curve'):
@@ -140,12 +151,16 @@ def train_val_test(data = None, class_labels = None, train = 0.6, val = 0.2, shu
     
     return X_train, y_train, X_val, y_val, X_test, y_test
 
-def pca_scree_plot(data = None, n_components = None, width = 16, height = 10, legend_size = 12, title = 'PCA Scree Plot'):
+def pca_scree_plot(data = None, n_components = None, width = 16, height = 10, legend_size = 12, scale_data = False, title = 'PCA Scree Plot'):
 
     """
     Function that accepts data, and number of principal components to be analysed. It will produce a scree plot of the cumulative variance explained.  
     """
-    
+    if scale_data:
+        data = scale(data)
+    else:
+        pass
+
     pca = PCA(n_components = n_components)
     pca_model = pca.fit(data)
     var_exp = pca_model.explained_variance_ratio_.cumsum().round(4)*100
@@ -159,4 +174,4 @@ def pca_scree_plot(data = None, n_components = None, width = 16, height = 10, le
     ax.axhspan(99, 100, alpha = 0.7, color = '#FF8C78', label = '99% - 100%')
     ax.legend(loc = 4, prop={'size': legend_size})
     ax.plot(var_exp, marker = '.', markersize = 10);
-    plt.show()    
+    plt.show()        
