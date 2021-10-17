@@ -5,8 +5,10 @@ Change Log
 
 - First release.
 
-0.0.2
+0.0.2 (18/10/2021)
 
 - Fixed bug with scoring parameter for classifier_train_report. The function now accepts the strings 'accuracy', 'f1', 'recall' and 'precision' as arguments for scoring.
 
 - added a 'scale_data' parameter for the pca_scree_plot function that will normalise data passed in before performing analysis and plotting.
+
+- Update docs and provide examples
