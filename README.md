@@ -13,7 +13,7 @@ pip install skflex
 import skflex.skflex as skf
 ```
 
-## Functions 
+# Functions 
 Functions currently included along with descriptions and default parameter settings.
 
 
