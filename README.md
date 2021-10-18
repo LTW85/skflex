@@ -1,6 +1,6 @@
 # skflex
 
-![GitHub](https://img.shields.io/github/license/ltw85/skflex) ![PyPI](https://img.shields.io/pypi/v/skflex)
+![GitHub](https://img.shields.io/github/license/ltw85/skflex) ![PyPI](https://img.shields.io/pypi/v/skflex) ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FLTW85%2Fskflex)
 
 ## *FLEXIBLE FUNCTIONS* ----- *FAST PROCESSING AND EVALUATION*
 
