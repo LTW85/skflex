@@ -12,10 +12,7 @@ pip install skflex
 
 import skflex.skflex as skf
 ```
-
-# Functions 
-Functions currently included along with descriptions and default parameter settings.
-
+_____________________________________________________________________________________________________________________________________________________________________
 
 # roc_auc_plot
 Accepts fitted model(s) and test data. It will then:
@@ -53,6 +50,8 @@ skf.roc_auc_plot(model_1, model_2, X_test = X_test, y_test = y_test,
 ```
 
 ![roc plot](example_roc_plot.PNG)
+
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 # classifier_train_report
 Accepts classifier models, training data, and test data. It will then:
@@ -93,6 +92,8 @@ skf.classifier_train_report(model_1, model_2, X_train = X_train, y_train = y_tra
 
 ![classification report](example_classification_report.PNG)
 
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
 # validation_plot
 Accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoring methodology, as well as a plot title.
 It will produce a plot of the validation curve for the training and test data using the mean scores and standard deviations obtained through the cross-validation process. 
@@ -129,6 +130,8 @@ skf.validation_plot(model = model_1, param = 'max_depth', param_grid = params,
 
 ![validation plot](example_validation_curve.PNG)
 
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
 # train_val_test
 Accepts a Pandas dataframe and will return a training, validation, and test set. Operates in a similar fashion to the sklearn train_test_split function by defining a percentage split for the training and validation sets (example 0.6 = 60%). The remainder is allocated to the test set.
 
@@ -154,6 +157,8 @@ X_train, y_train, X_val, y_val, X_test, y_test = skf.train_val_test(data = my_da
                                                                     train = 0.6, 
                                                                     val = 0.2)
 ```
+
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 # pca_scree_plot
 Accepts data (array/dataframe), and number of principal components to be analysed. It will produce a scree plot of the cumulative variance explained.
@@ -181,6 +186,8 @@ n_data = scale(my_data)
 skf.pca_scree_plot(data = n_data, n_components = 70, title = 'Example PCA Scree Plot')
 ```
 ![scree plot](example_scree_plot.PNG)
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 ## Requirements
 - Sklearn >= 0.24.1
