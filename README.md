@@ -90,7 +90,7 @@ skf.classifier_train_report(model_1, model_2, X_train = X_train, y_train = y_tra
                             title = 'Example Report')
 ```
 
-![classification report](example_classification_report.PNG)
+![classification report](example_classification_report1.PNG)
 
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
