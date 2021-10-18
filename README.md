@@ -2,11 +2,11 @@
 
 ![GitHub](https://img.shields.io/github/license/ltw85/skflex) ![PyPI](https://img.shields.io/pypi/v/skflex) [![Build Status](https://scrutinizer-ci.com/g/LTW85/skflex/badges/build.png?b=main)](https://scrutinizer-ci.com/g/LTW85/skflex/build-status/main) [![Tweet](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2FLTW85%2Fskflex)](https://twitter.com/intent/tweet?text=https%3A%2F%2Fgithub.com%2FLTW85%2Fskflex)
 
-## *FLEXIBLE FUNCTIONS* ----- *FAST PROCESSING AND EVALUATION*
+# *FLEXIBLE FUNCTIONS* ----- *FAST PROCESSING AND EVALUATION*
 
-skflex provides a suite of utility functions for use with the sklearn library. The module primarily focuses on producing typical plots and metrics for evaluating machine learning models. It has been designed with flexability and customisation in mind to speed up workflows, and enhance comparative evaluation.
+skflex provides a suite of utility functions for use with the sklearn library. The module primarily focuses on producing typical plots and metrics for evaluating machine learning models. It has been designed with flexability and customisation in mind to speed up workflows, and enhance comparative evaluation. 
 
-## Installation and Import
+# Installation and Import
 ```
 pip install skflex
 
@@ -185,6 +185,7 @@ n_data = scale(my_data)
 
 skf.pca_scree_plot(data = n_data, n_components = 70, title = 'Example PCA Scree Plot')
 ```
+
 ![scree plot](example_scree_plot.PNG)
 
 _______________________________________________________________________________________________________________________________________________________________________________________________________________________________________
