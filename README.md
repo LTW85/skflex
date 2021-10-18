@@ -89,6 +89,8 @@ skf.classifier_train_report(model_1, model_2, X_train = X_train, y_train = y_tra
                             title = 'Example Report')
 ```
 
+![classification report](example_classification_report.PNG)
+
 ### validation_plot
 Accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoring methodology, as well as a plot title.
 It will produce a plot of the validation curve for the training and test data using the mean scores and standard deviations obtained through the cross-validation process. 
