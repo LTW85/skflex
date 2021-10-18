@@ -12,3 +12,9 @@ Change Log
 - added a 'scale_data' parameter for the pca_scree_plot function that will normalise data passed in before performing analysis and plotting.
 
 - Update docs and provide examples
+
+1.0.1 (19/10/2021)
+
+- Fixed bug with y axis label for validation plot
+
+- added further explanation for classifier_train_report summary

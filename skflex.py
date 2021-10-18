@@ -95,7 +95,7 @@ def classifier_train_report(*models, X_train = None, y_train = None, X_test = No
         
     sorted_scores = sorted(m_scores, key=lambda s: s['sum_score'], reverse = True)
     
-    print('Summary:') 
+    print('SUMMARY - models sorted by' + ' ' + str(scoring) + ' ' + 'score:') 
     for s in sorted_scores:
         print('model:' + ' ' + str(s['model']) + ' ' + '--- ' + 'score:' + ' ' + str(s['sum_score'].round(3)))   
 
@@ -109,13 +109,13 @@ def validation_plot(model = None, param = None, param_grid = None, X_train = Non
     """
     train_scores, test_scores = validation_curve(
     model, X_train, y_train, param_name=param, param_range=param_grid,
-    scoring=scoring, cv=cv)
+    scoring = scoring, cv = cv)
     
-    train_mean = np.mean(train_scores, axis=1)
-    train_std = np.std(train_scores, axis=1)
+    train_mean = np.mean(train_scores, axis = 1)
+    train_std = np.std(train_scores, axis = 1)
 
-    test_mean = np.mean(test_scores, axis=1)
-    test_std = np.std(test_scores, axis=1)
+    test_mean = np.mean(test_scores, axis = 1)
+    test_std = np.std(test_scores, axis = 1)
     
     plt.subplots(1, figsize = (width, height))
     plt.plot(param_grid, train_mean, label = 'Training score', color = 'black')
@@ -124,9 +124,9 @@ def validation_plot(model = None, param = None, param_grid = None, X_train = Non
     plt.fill_between(param_grid, train_mean - train_std, train_mean + train_std, color = 'blue', alpha = 0.2)
     plt.fill_between(param_grid, test_mean - test_std, test_mean + test_std, color = 'darkblue', alpha = 0.2)
  
-    plt.title(title, fontsize=14, fontweight='bold')
+    plt.title(title, fontsize = 14, fontweight = 'bold')
     plt.xlabel('Param Range')
-    plt.ylabel('Accuracy Score')
+    plt.ylabel(str(scoring) +' ' + 'score')
     plt.tight_layout()
     plt.legend(loc = 'best')
     plt.show()
@@ -165,13 +165,13 @@ def pca_scree_plot(data = None, n_components = None, width = 16, height = 10, le
     pca_model = pca.fit(data)
     var_exp = pca_model.explained_variance_ratio_.cumsum().round(4)*100
     
-    fig, ax = plt.subplots(figsize=(width, height))
-    ax.set_title(title, fontsize=14, fontweight='bold')
-    ax.set_xlabel('Principal Components', fontsize=12)
-    ax.set_ylabel('Variance Explained (%)', fontsize=12)
+    fig, ax = plt.subplots(figsize = (width, height))
+    ax.set_title(title, fontsize = 14, fontweight = 'bold')
+    ax.set_xlabel('Principal Components', fontsize = 12)
+    ax.set_ylabel('Variance Explained (%)', fontsize = 12)
     ax.axhspan(90, 100, alpha = 0.3, color = '#FF8C78', label = '90% - 95%')
     ax.axhspan(95, 100, alpha = 0.5, color = '#FF8C78', label = '95% - 99%')
     ax.axhspan(99, 100, alpha = 0.7, color = '#FF8C78', label = '99% - 100%')
-    ax.legend(loc = 4, prop={'size': legend_size})
+    ax.legend(loc = 4, prop = {'size': legend_size})
     ax.plot(var_exp, marker = '.', markersize = 10);
-    plt.show()        
+    plt.show()            
