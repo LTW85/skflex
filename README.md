@@ -1,5 +1,7 @@
 # skflex
 
+![GitHub](https://img.shields.io/github/license/ltw85/skflex) ![PyPI](https://img.shields.io/pypi/v/skflex)
+
 ## *FLEXIBLE FUNCTIONS* ----- *FAST PROCESSING AND EVALUATION*
 
 skflex provides a suite of utility functions for use with the sklearn library. The module primarily focuses on producing typical plots and metrics for evaluating machine learning models. It has been designed with flexability and customisation in mind to speed up workflows, and enhance comparative evaluation.
