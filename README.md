@@ -114,7 +114,7 @@ model = None, param = None, param_grid = None, X_train = None, y_train = None, c
 #### Example:
 
 ```
-from sklearn.naive_bayes import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier
 
 model_1 = DecisionTreeClassifier()
 params = [5, 10, 15, 20, 30, 40, 50]
