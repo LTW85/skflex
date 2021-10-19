@@ -14,7 +14,10 @@ import skflex.skflex as skf
 ```
 _____________________________________________________________________________________________________________________________________________________________________
 
-# roc_auc_plot
+# ROC_AUC Curve
+
+### roc_auc_plot(*models, X_test = None, y_test = None, width = 14, height = 12, legend_size = 14, title='ROC Curve'*)
+
 Accepts fitted model(s) and test data. It will then:
 - Calculate ROC
 - Calculate AUC
@@ -28,10 +31,6 @@ Accepts fitted model(s) and test data. It will then:
 - width - plot width
 - height - plot height
 - legend_size - size of plot legend
-
-#### Default:
-
-models, X_test = None, y_test = None, width = 14, height = 12, legend_size = 14, title='ROC Curve'
 
 #### Example:
 
@@ -53,7 +52,10 @@ skf.roc_auc_plot(model_1, model_2, X_test = X_test, y_test = y_test,
 
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-# classifier_train_report
+# Classification Reports
+
+### classifier_train_report(*models, X_train = None, y_train = None, X_test = None, y_test = None, scoring = 'accuracy', title = 'Reports'*)
+
 Accepts classifier models, training data, and test data. It will then:
 - Fit the model(s) to training data
 - Make predictions using test data
@@ -69,10 +71,6 @@ Accepts classifier models, training data, and test data. It will then:
 - y_test - test label set
 - scoring - summary evaluation metric. Common classifier evaluation metrics including accuracy, f1, precision, and recall are supported. Refer to [sklean scoring documentation](https://scikit-learn.org/stable/modules/model_evaluation.html#accuracy-score) for more information. Scoring methodologies should be passed as strings, for example, precision would be passed as `scoring = 'precision'` 
 - title - title for output report 
-
-#### Default:
-
-models, X_train = None, y_train = None, X_test = None, y_test = None, scoring = 'accuracy', title = 'Reports'
 
 #### Example:
 
@@ -94,7 +92,10 @@ skf.classifier_train_report(model_1, model_2, X_train = X_train, y_train = y_tra
 
 _________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-# validation_plot
+# Validation Curve
+
+### validation_plot(*model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, title = 'Validation Curve'*)
+
 Accepts a model, a related hyper-parameter, a list of hyper-parameter values, training and test data, number of cross-validation folds, scoring methodology, as well as a plot title.
 It will produce a plot of the validation curve for the training and test data using the mean scores and standard deviations obtained through the cross-validation process. 
 
@@ -109,10 +110,6 @@ It will produce a plot of the validation curve for the training and test data us
 - title - title for validation plot
 - width - plot width
 - height - plot height
-
-#### Default:
-
-model = None, param = None, param_grid = None, X_train = None, y_train = None, cv = 5, scoring = 'accuracy', width = 9, height = 9, title = 'Validation Curve'
 
 #### Example:
 
@@ -132,7 +129,10 @@ skf.validation_plot(model = model_1, param = 'max_depth', param_grid = params,
 
 ____________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-# train_val_test
+# Train, Validation and Test Split
+
+### train_val_test(*data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True, random_state = None*)
+
 Accepts a Pandas dataframe and will return a training, validation, and test set. Operates in a similar fashion to the sklearn train_test_split function by defining a percentage split for the training and validation sets (example 0.6 = 60%). The remainder is allocated to the test set.
 
 #### Parameters:
@@ -142,10 +142,6 @@ Accepts a Pandas dataframe and will return a training, validation, and test set.
 - val - percentage of data to be allocated to the validation set
 - shuffle - if true, will shuffle the rows in the dataframe before splitting
 - random_state - if shuffle is ture, will set a random seed so that ordering produced by shuffle can be reproduced
-
-#### Default:
-
-data = None, class_labels = None, train = 0.6, val = 0.2, shuffle = True, random_state = None
 
 Returns: X_train, y_train, X_val, y_val, X_test, y_test
 
@@ -160,7 +156,10 @@ X_train, y_train, X_val, y_val, X_test, y_test = skf.train_val_test(data = my_da
 
 ______________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-# pca_scree_plot
+# PCA Scree Plot
+
+### pca_scree_plot(*data = None, n_components = None, width = 16, height = 10, legend_size = 12, scale_data = False, title = 'PCA Scree Plot'*)
+
 Accepts data (array/dataframe), and number of principal components to be analysed. It will produce a scree plot of the cumulative variance explained.
 
 #### Parameters:
@@ -171,10 +170,6 @@ Accepts data (array/dataframe), and number of principal components to be analyse
 - legend_size - size of plot legend
 - scale_data - normalises data before analysis and plotting. If the data being passed has not yet been normalised, this parameter should be set as `scale_data = True`
 - title - plot title
-
-#### Default:
-
-data = None, n_components = None, width = 16, height = 10, legend_size = 12, scale_data = False, title = 'PCA Scree Plot'
 
 ### Example:
 
